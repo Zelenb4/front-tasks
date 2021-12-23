@@ -36,7 +36,7 @@ const [state, setState] = useState({
 
   useEffect(() => {
     setSelectedDays(days)
-  }, [days, setSelectedDays])
+  }, [])
 
 
   const onChange = activeKey => {
