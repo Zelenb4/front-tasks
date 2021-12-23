@@ -1,0 +1,29 @@
+.wrap{
+  padding: 40px 60px;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  min-width: 400px;
+  border: 1px solid;
+  height: 60px;
+  box-sizing: border-box;
+}
+.item {
+  flex-shrink: 0;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid;
+  height: 100%;
+}
+.rangeWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}

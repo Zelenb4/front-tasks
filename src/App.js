@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import WeekdayPicker from './layout/WeekdayPicker';
 import WorkloadOverview from './layout/WorkloadOverview';
+import TimePiker from './layout/task/components/time_piker/index';
 
 function App() {
   const [selectedDays, setSelectedDays] = useState([]);
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      <TimePiker />
       <WeekdayPicker days={days} setSelectedDays={setSelectedDays} selectedDays={selectedDays} />
       <WorkloadOverview start={0} countBefore={2} point={50} countAfter={4} end={100} selectedDays={selectedDays} />
     </div>
