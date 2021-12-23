@@ -1,13 +1,12 @@
 // Styles
 import { MainContainer } from './style';
-import { Tabs } from '../../ui/Tabs';
-import { ContainerTabs } from '../task/components/TabsContainer';
-import { StyledTabPane } from '../../ui/Tabs/style';
-import { Input } from '../../ui/Input';
+import { Tabs } from '../../../../ui/Tabs';
+import { StyledTabPane } from '../../../../ui/Tabs/style';
+import { Input } from '../../../../ui/Input';
 import { useState } from 'react';
 
 
-export const TestTask = () => {
+export const ContainerTabs = () => {
   const newTabIndex = 0;
   const [title, setTitle] = useState('tabs');
   const initialPanes = [
@@ -78,8 +77,8 @@ const [state, setState] = useState({
               console.log(title);
             return (
             <StyledTabPane tab={pane.title} key={pane.key} closable={pane.closable}>
+              {pane.content}
               <Input onChange={e => setTitle(e.target.value)}/>
-              <ContainerTabs />
             </StyledTabPane>
           )})}
         </Tabs>
