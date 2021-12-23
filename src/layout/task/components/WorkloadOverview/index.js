@@ -10,7 +10,8 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
-const WorkloadOverview = ({ start, countBefore, point, countAfter, end, selectedDays }) => {
+const WorkloadOverview = ({ timePikerData = {}, selectedDays = [] }) => {
+    const { start = 0, countBefore = 1, point = 50, countAfter = 3, end = 100 } = timePikerData;
     ChartJS.register(
         CategoryScale,
         LinearScale,
@@ -19,6 +20,7 @@ const WorkloadOverview = ({ start, countBefore, point, countAfter, end, selected
         Tooltip,
         Legend
     );
+    // console.log('selectedDays', selectedDays);
 
     const labels = [
         "Monday",
@@ -55,8 +57,8 @@ const WorkloadOverview = ({ start, countBefore, point, countAfter, end, selected
             }
         }
     };
-    let result = []
-    const countDate = useCallback(value => {
+    const countDate = value => {
+        let result = []
         for (let i = 0; i < selectedDays.length; i++) {
             if (selectedDays[i].active) {
                 result[i] = value
@@ -64,8 +66,9 @@ const WorkloadOverview = ({ start, countBefore, point, countAfter, end, selected
                 result[i] = 1
             }
         }
+        console.log('result', result);
         return result;
-    }, [result, selectedDays]);
+    }
 
     const data = {
         labels,

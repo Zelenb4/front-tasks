@@ -2,13 +2,13 @@
 import { MainContainer } from './style';
 import { Tabs } from '../../../../ui/Tabs';
 import { StyledTabPane } from '../../../../ui/Tabs/style';
-import { Input } from '../../../../ui/Input';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import TimePiker from '../time_piker';
+import WeekdayPicker from '../WeekdayPicker';
 
-
-export const ContainerTabs = () => {
+export const ContainerTabs = ({ selectedDays, setSelectedDays, setTimePikerData }) => {
   const newTabIndex = 0;
-  const [title, setTitle] = useState('tabs');
+
   const initialPanes = [
     { title: 'title1', content: 'Content of Tab 1', key: '1' },
     { title: 'title2', content: 'Content of Tab 2', key: '2' },
@@ -18,10 +18,25 @@ export const ContainerTabs = () => {
       key: '3',
     },
   ];
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const days = [
+    { id: 1, name: "S", fullName: 'Sunday', active: false, },
+    { id: 2, name: "M", fullName: 'Monday', active: false, },
+    { id: 3, name: "T", fullName: 'Tuesday', active: false, },
+    { id: 4, name: "W", fullName: 'Wednesady', active: false, },
+    { id: 5, name: "T", fullName: 'Thursday', active: false, },
+    { id: 6, name: "F", fullName: 'Friday', active: false, },
+    { id: 7, name: "S", fullName: 'Saturday', active: false, }
+  ]
 const [state, setState] = useState({
   activeKey: initialPanes[0].key,
   panes: initialPanes,
 });
+
+  useEffect(() => {
+    setSelectedDays(days)
+  }, [days, setSelectedDays])
 
 
   const onChange = activeKey => {
@@ -74,11 +89,11 @@ const [state, setState] = useState({
           onEdit={onEdit}
         >
           {panes.map(pane => {
-              console.log(title);
+              // console.log(title);
             return (
-            <StyledTabPane tab={pane.title} key={pane.key} closable={pane.closable}>
-              {pane.content}
-              <Input onChange={e => setTitle(e.target.value)}/>
+              <StyledTabPane tab={pane.title} key={pane.key} closable={pane.closable}>
+                <TimePiker onChange={e => setTimePikerData(e)} />
+                <WeekdayPicker days={days} setSelectedDays={setSelectedDays} selectedDays={selectedDays} />
             </StyledTabPane>
           )})}
         </Tabs>

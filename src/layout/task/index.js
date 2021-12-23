@@ -5,11 +5,13 @@ import { ContainerTabs } from '../task/components/TabsContainer';
 import { StyledTabPane } from '../../ui/Tabs/style';
 import { Input } from '../../ui/Input';
 import { useState } from 'react';
-
+import WorkloadOverview from './components/WorkloadOverview';
 
 export const TestTask = () => {
   const newTabIndex = 0;
   const [title, setTitle] = useState('tabs');
+  const [timePikerData, setTimePikerData] = useState();
+  const [selectedDays, setSelectedDays] = useState([]);
   const initialPanes = [
     { title: 'title1', content: 'Content of Tab 1', key: '1' },
     { title: 'title2', content: 'Content of Tab 2', key: '2' },
@@ -19,11 +21,11 @@ export const TestTask = () => {
       key: '3',
     },
   ];
+
 const [state, setState] = useState({
   activeKey: initialPanes[0].key,
   panes: initialPanes,
 });
-
 
   const onChange = activeKey => {
     console.log(activeKey, 'activeKey');
@@ -79,7 +81,12 @@ const [state, setState] = useState({
             return (
             <StyledTabPane tab={pane.title} key={pane.key} closable={pane.closable}>
               <Input onChange={e => setTitle(e.target.value)}/>
-              <ContainerTabs />
+                <ContainerTabs
+                  selectedDays={selectedDays}
+                  setSelectedDays={setSelectedDays}
+                  setTimePikerData={setTimePikerData}
+                />
+                <WorkloadOverview timePikerData={timePikerData && timePikerData} selectedDays={selectedDays} />
             </StyledTabPane>
           )})}
         </Tabs>
