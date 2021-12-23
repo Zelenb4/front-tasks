@@ -1,0 +1,60 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.slider {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 5px 2px;
+}
+
+.slider-track-container {
+  display: flex;
+  width: 100%;
+  background: none !important;
+}
+
+.slider-track {
+  height: 4px;
+  width: 100%;
+  align-self: center;
+}
+
+.slider-thumb-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -20px;
+  left: 0px;
+  border: none;
+  height: 20px;
+  width: 60px;
+  border-radius: 10px;
+  background: #000;
+  color: #fff;
+}
+.slider-thumb-container:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 1px;
+  height: 10px;
+  background-color: #000;
+  bottom: -7px;
+  left: 50%;
+}
+
+.slider-thumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 60px;
+  line-height: 1;
+  font-size: 16px;
+  padding-top: 2px;
+  background: transparent;
+  outline: none !important;
+}
