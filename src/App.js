@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import TimePiker from './time_piker/index';
+import TimePiker from './layout/task/components/time_piker/index';
 
 function App() {
   return (
